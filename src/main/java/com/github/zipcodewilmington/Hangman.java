@@ -12,8 +12,9 @@ public class Hangman {
     String playOrNot;
     String playerGuess;
     static String secretWord;
+    static String userWord = "___";
     static String choiceToPlay;
-    static String letter;
+    static String guess;
     static String[] wordList = {"ART", "BAR", "BAT", "BAN", "BIN", "BIT", "CAT", "DAD", "EAT", "EAR", "FUR", "FIT", "FAR",
             "FOX", "GET", "GEL", "HEM", "HIP", "HAS", "INK", "ILL", "ILK", "KIN", "KIT", "LIT", "LET", "LOP", "LAX",
             "MAT", "MIX", "MAX", "NOT", "NIT", "NET", "NIL", "ONE", "OAT", "OLD", "POT", "PAT", "PIT", "PAN", "QAT",
@@ -31,7 +32,7 @@ public class Hangman {
         getRandomWord();
 
         System.out.println("The secret word has 3 letters, and you get 4 strikes:");
-        System.out.println("_ _ _");
+        System.out.println("___");
 
 
         while (strikeCounter < maxStrike) {
@@ -67,13 +68,16 @@ public class Hangman {
     public static void guessAgain(){
         System.out.println("Type your 1 letter guess");
         Scanner sc = new Scanner(System.in);
-        letter = sc.next();
+        guess = sc.next();
     }
     public static void getRandomWord(){
         secretWord = wordList[new Random().nextInt(wordList.length)];
     }
     public static void compareLettersInSecretWord(){
-        //Build this later
+        for (int i = 0; i < secretWord.length(); i++) {
+            char letter = secretWord.charAt(i);
+            System.out.println(letter);
+        }
     }
     public static void displayKnownLetters(){
         //Build this later
