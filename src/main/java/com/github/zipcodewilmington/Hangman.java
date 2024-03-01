@@ -94,12 +94,7 @@ public class Hangman {
         System.out.println("I bet you saw this coming. Three letters is too hard for you");
         System.exit(0);
     }
-
-
 }
-
-
-
 
 /**
  * @author xt0fer
