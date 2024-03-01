@@ -76,11 +76,16 @@ public class Hangman {
     public static void compareLettersInSecretWord(){
         for (int i = 0; i < secretWord.length(); i++) {
             char letter = secretWord.charAt(i);
-            System.out.println(letter);
+            String stringLetter = String.valueOf(letter);
+            if (Objects.equals(guess, stringLetter)) {
+                userWord = userWord.substring(0, i) + guess
+                        + userWord.substring(i + 1);
+            }
         }
+
     }
     public static void displayKnownLetters(){
-        //Build this later
+        System.out.println(userWord);
     }
     public static boolean checkWinTheGame(){
         return true;
