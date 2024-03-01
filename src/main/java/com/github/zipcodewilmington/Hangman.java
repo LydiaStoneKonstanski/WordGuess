@@ -38,15 +38,8 @@ public class Hangman {
         while (strikeCounter < maxStrike) {
             guessAgain();
             compareLettersInSecretWord();
-            //if the character matches any letter in the secret word, call  displayKnownLetters();
-            if (checkWinTheGame()) {
-                wonTheGameMessage();
-                //Do something
-            }
-            //if the letters are all guessed, return wonTheGameMessage
-            //else strikeCounter++
-            //
-
+            displayKnownLetters();
+            checkWinTheGame();
         }
         resolveLoss();
 
@@ -57,7 +50,7 @@ public class Hangman {
         System.exit(0);
     }
     public static boolean noToPlay(){
-        System.out.println("Hi, would you like to play Guess the Secret Word?");
+        System.out.println("Are you feeling lucky? Would you like to play Guess my Secret Word?");
         System.out.println("Type Y for yes or N for no");
         Scanner sc = new Scanner(System.in);
         choiceToPlay = sc.next();
@@ -74,27 +67,32 @@ public class Hangman {
         secretWord = wordList[new Random().nextInt(wordList.length)];
     }
     public static void compareLettersInSecretWord(){
+        boolean success = false;
         for (int i = 0; i < secretWord.length(); i++) {
             char letter = secretWord.charAt(i);
             String stringLetter = String.valueOf(letter);
             if (Objects.equals(guess, stringLetter)) {
                 userWord = userWord.substring(0, i) + guess
                         + userWord.substring(i + 1);
+                success = true;
             }
+        } if(!success) {
+            strikeCounter++;
+            System.out.println("What a loser! That's a strike!");
         }
-
     }
     public static void displayKnownLetters(){
         System.out.println(userWord);
     }
-    public static boolean checkWinTheGame(){
-        return true;
-    }
-    public static void wonTheGameMessage(){
-        //Print "Well done! You won!"
+    public static void checkWinTheGame(){
+        if(userWord == secretWord) {
+            System.out.println("You beat me this time. Even a broken clock is right twice a day");
+            System.exit(0);
+        }
     }
     public static void resolveLoss() {
-        //Print "Too bad. Better luck next time!"
+        System.out.println("I bet you saw this coming. Three letters is too hard for you");
+        System.exit(0);
     }
 
 
