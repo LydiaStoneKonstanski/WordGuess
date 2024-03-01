@@ -5,13 +5,13 @@ import java.util.*;
 //Declare Class
 public class Hangman {
     //Declare variables
-    int strikeCounter = 0;
-    int maxStrike = 5;
+    static int strikeCounter = 0;
+    static int maxStrike = 5;
     int correctLetters = 0;
     String playOrNot;
     String playerGuess;
     String secretWord;
-    char menuChoice;
+    char choiceToPlay;
     char letter;
     String[] wordList = {"ART", "BAR", "BAT", "BAN", "BIN", "BIT", "CAT", "DAD", "EAT", "EAR", "FUR", "FIT", "FAR",
             "FOX", "GET", "GEL", "HEM", "HIP", "HAS", "INK", "ILL", "ILK", "KIN", "KIT", "LIT", "LET", "LOP", "LAX",
@@ -22,7 +22,8 @@ public class Hangman {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        if (endGame()){
+        if (noToPlay()){
+         endGame();
             // End Game
         }
 
@@ -50,15 +51,22 @@ public class Hangman {
         resolveLoss();
 
     }//Build Methods
-    System.out.println("Let's play Word Guess 1.0!");
     {
         System.out.println("Do you want to play? Press Y/N\n");
         choiceToPlay = sc.next();
     }
 
-    public static boolean endGame(){
-        // Build This later.
-        return false;
+    public static void endGame(){
+        System.out.println("Fine, I didn't want to play with you anyway!");
+        System.exit(0);
+    }
+    public static boolean noToPlay(){
+        System.out.println("Hi, would you like to play Guess The Secret Word?");
+        System.out.println("Type Y for yes or N for no");
+        choiceToPlay = sc.next();
+        if (choiceToPlay == 'N' || 'n')
+            return true;
+        else return false;
     }
     public static void guessAgain(){
         //Build this later
