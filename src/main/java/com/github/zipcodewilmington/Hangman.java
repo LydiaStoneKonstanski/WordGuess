@@ -7,13 +7,13 @@ import java.util.Random;
 public class Hangman {
     //Declare variables
     static int strikeCounter = 0;
-    static int maxStrike = 5;
+    static int maxStrike = 4;
     int correctLetters = 0;
     String playOrNot;
     String playerGuess;
     static String secretWord;
     static String choiceToPlay;
-    char letter;
+    static String letter;
     static String[] wordList = {"ART", "BAR", "BAT", "BAN", "BIN", "BIT", "CAT", "DAD", "EAT", "EAR", "FUR", "FIT", "FAR",
             "FOX", "GET", "GEL", "HEM", "HIP", "HAS", "INK", "ILL", "ILK", "KIN", "KIT", "LIT", "LET", "LOP", "LAX",
             "MAT", "MIX", "MAX", "NOT", "NIT", "NET", "NIL", "ONE", "OAT", "OLD", "POT", "PAT", "PIT", "PAN", "QAT",
@@ -30,16 +30,14 @@ public class Hangman {
 
         getRandomWord();
 
-
-        displayKnownLetters();
-        //shows underscores or correct letters
-        //System.out.println()
+        System.out.println("The secret word has 3 letters, and you get 4 strikes:");
+        System.out.println("_ _ _");
 
 
         while (strikeCounter < maxStrike) {
             guessAgain();
             compareLettersInSecretWord();
-            //if the character matches any letter in the secret word, call displayKnownLetter.
+            //if the character matches any letter in the secret word, call  displayKnownLetters();
             if (checkWinTheGame()) {
                 wonTheGameMessage();
                 //Do something
@@ -67,10 +65,12 @@ public class Hangman {
         } else return false;
     }
     public static void guessAgain(){
-        //Build this later
+        System.out.println("Type your 1 letter guess");
+        Scanner sc = new Scanner(System.in);
+        letter = sc.next();
     }
     public static void getRandomWord(){
-        secretWord = (wordList[new Random().nextInt(wordList.length)]);
+        secretWord = wordList[new Random().nextInt(wordList.length)];
     }
     public static void compareLettersInSecretWord(){
         //Build this later
